@@ -26,7 +26,7 @@
                     <div class="col-12 p-2">
                         <input v-model="form.address" 
                         class="form-control" 
-                        placeholder="Address" required />
+                        placeholder="Address *" required />
                     </div>
                 </div>
             </div>

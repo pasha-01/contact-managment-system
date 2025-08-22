@@ -74,7 +74,10 @@ function cancelEdit() {
 
 
 function saveEdit() {
-  if (!draft.value.name || !draft.value.email || !draft.value.phone) return
+  if (!draft.value.name || 
+  !draft.value.email || 
+  !draft.value.phone) 
+  return
   emit('edit-contact', { ...draft.value })
   edit.value = false
 }

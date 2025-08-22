@@ -70,11 +70,11 @@ function editContact(updatedContact: IContact){
 
     //  If the contact is found, update it
     //  If not found, index will be -1
-    if (index !== -1) 
-    {
-        contacts.value[index] = {...updatedContact};
+    // if (index !== -1) 
+    // {
+    //     contacts.value[index] = {...updatedContact};
 
-    }
+    // }
 
 } 
 
