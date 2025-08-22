@@ -1,10 +1,30 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav class="navbar navabar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand"> Contact </span>
+      <button
+      v-if="$route.meta.requiresAuth"
+      class=" btn btn-outline-light"
+      @click="logout"
+      >
+      Logout
+    </button>
+    </div>
   </nav>
   <router-view/>
 </template>
+
+<script  setup lang="ts">
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+
+function logout(){
+  localStorage.removeItem('LoggedInUser');
+  router.push('/login');  
+}
+</script>
+
 
 <style>
 #app {
