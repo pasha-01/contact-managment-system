@@ -1,42 +1,40 @@
 <template>
-    <h3 class=" justify-content-between align-item-center mb-3">Contacts List</h3>
-    <div v-if="contacts.length"> 
+    <h6 class=" justify-content-between mb-3 fw-normal fs-4 lh-base">Contacts</h6>
+    <div v-if="contacts && contacts.length">
         <div class="table-responsive">
-            <table class="table table-striped align-middle">
-                <thead class="table-light">
+            <table class="table align-middle table-hover">
+                <thead class="border-bottom border-dar ">
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Address</th>
+                        <th style="font-weight: normal;">Name</th>
+                        <th style="font-weight: normal;">Email</th>
+                        <th style="font-weight: normal;">Phone</th>
+                        <th style="font-weight: normal;">Address</th>
+                        <th style="font-weight: normal;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <ContactItem 
-                    v-for="contactlist in contacts"
-                    :key="contactlist.name"
-                    :contact="contactlist"
-                    @delete-contact="$emit('delete-contact', contactlist.name)"
-                    @edit-contact="$emit('edit-contact', $event)"
-                    />
+                    <ContactItem v-for="contact in contacts" :key="contact.name" :contact="contact"
+                        @edit-contact="$emit('edit-contact', $event)"
+                        @delete-contact="$emit('delete-contact', $event)" />
                 </tbody>
             </table>
         </div>
     </div>
-    <div v-else class="alert alert-secondary"> NO COntacts</div>
+    <div v-else class="alert alert-secondary "> No Contacts</div>
 </template>
 
 <script setup lang="ts">
-// import { ref } from 'vue';
-// import ContactItem from '..ContactItem.vue';
-import ContactItem from '../components/ContactItem.vue';
+import ContactItem from './ContactItem.vue';
 import type { IContact } from '../types/IContact';
 
 const props = defineProps<{
     contacts: IContact[]
 }>();
-// const emit = defineEmits<{
-//     (event: 'delete-contact', name: string): void;
-//     (event: 'edit-contact', contact: IContact): void;
-// }>();
 </script>
+
+<style scoped>
+/* remove cursor pointer on hover so rows don't appear clickable */
+tr:hover {
+    background-color: skyblue;
+}
+</style>

@@ -1,7 +1,6 @@
 <template>
     <div class="container py-5">
         <div class="row justify-content-center">
-        
             <div class="col-12 col-md-4">
                 <div class="card p-4 ">
                     <h3 class="text-center mb-3"> Login</h3>
@@ -19,7 +18,7 @@
                     </div>
                     <button class="btn btn-primary w-100" @click="login">Login</button>
                     <div v-if="error" class="text-danger mt-2 small"> {{ error }}</div>
-                    <div class="mt-2 text-muted  small "> Try ali and   123</div>
+                    <div class="mt-2 text-muted  small text-center "> Try ali and   123</div>
                 </div>
             </div>
         </div>
@@ -35,7 +34,7 @@ const password = ref('');
 const error = ref('');
 function login (){
     if( username.value ==='ali' && password.value === '123'){
-        localStorage.setItem('authToken', 'dummy-token'); 
+        localStorage.setItem('authorized', 'dummy'); 
         localStorage.setItem('LoggedInUser', username.value);
         router.push('/contacts');  
     } else {

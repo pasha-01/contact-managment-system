@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import ContactPage from '@/pages/ContactPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
+import ContactForm from '@/components/ContactForm.vue'
+import ContactDetails from '@/components/ContactDetails.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -16,11 +18,21 @@ const routes: Array<RouteRecordRaw> = [
 },
 { 
     path: '/contacts', 
-    name: 'Contacts',
+    name: 'ContactPage',
     component: ContactPage, 
     meta: { requiresAuth: true }
  },
-
+ {
+  path: '/contact-form',
+  name : 'ContactForm',
+  component: ContactForm,
+  meta: { requiresAuth: true }
+ },
+ { path: '/contact/:name', 
+  name: 'ContactDetail', 
+  component: ContactDetails, 
+  props: true, 
+  meta: { requiresAuth: true } }
 
 ]
 

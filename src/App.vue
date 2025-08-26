@@ -1,50 +1,29 @@
-<template>
-  <nav class="navbar navabar-dark bg-dark">
-    <div class="container-fluid">
-      <span class="navbar-brand"> Contact </span>
-      <button
-      v-if="$route.meta.requiresAuth"
-      class=" btn btn-outline-light"
-      @click="logout"
-      >
-      Logout
-    </button>
+  <template>
+    <div>
+      <Navbar @search="onSearch" />
+      <router-view :search="search" />
     </div>
-  </nav>
-  <router-view/>
-</template>
-
-<script  setup lang="ts">
-import { useRouter } from 'vue-router';
-const router = useRouter();
+    <!-- <router-view/> -->
+  </template>
 
 
-function logout(){
-  localStorage.removeItem('LoggedInUser');
-  router.push('/login');  
+
+<script setup lang="ts">
+import Navbar from './components/NavBar.vue';
+import { ref } from 'vue';
+
+const search = ref('')
+
+function onSearch(value: string) {
+  search.value = value
 }
 </script>
-
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 </style>
