@@ -7,17 +7,17 @@
                         <button type="button" class="btn btn-light me-2" @click="goBack">
                             <i class="bi bi-arrow-left"></i>
                         </button>
-                        
-                         <contact class="name">
+
+                        <contact class="name">
                             <strong>
-                        {{ form.name ? form.name : 'New Contact' }}
-                        </strong>
-                    </contact>
+                                {{ form.name ? form.name : 'New Contact' }}
+                            </strong>
+                        </contact>
                     </div>
-                   
+
                 </div>
                 <div class="col-lg-8 col-sm-8 col-8 mb-3 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary border-rounded justify-content-start">
+                    <button type="submit" class="btn btn-primary border-rounded justify-content-start" :disabled="!isFormFilled">
                         Save
                     </button>
                 </div>
@@ -26,22 +26,21 @@
             <div class="row justify-content-start">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-8 mb-3">
-                            <label class="form-label">Name</label>
-                            <input v-model="form.name" class="form-control" placeholder="Name *" required />
+                        <div class="col-md-8 mb-3  form-group">
+                            <input type="text" v-model="form.name" required placeholder="" />
+                            <label>Name</label>
                         </div>
-                        <div class="col-md-8 mb-3">
-                            <label class="form-label">Email</label>
-                            <input v-model="form.email" type="email" class="form-control" placeholder="Email *"
-                                required />
+                        <div class="col-md-8 mb-3 form-group">
+                            <input type="text" v-model="form.email" required placeholder="" />
+                            <label>Email</label>
                         </div>
-                        <div class="col-md-8 mb-3">
-                            <label class="form-label">Phone Number</label>
-                            <input v-model="phoneString" class="form-control" placeholder="Phone *" required />
+                        <div class="col-md-8 mb-3 form-group">
+                            <input v-model="phoneString" required placeholder="" />
+                            <label type="text">Phone Number</label>
                         </div>
-                        <div class="col-md-8 mb-3">
-                            <label class="form-label">Address</label>
-                            <input v-model="form.address" class="form-control" placeholder="Address *" required />
+                        <div class="col-md-8 mb-3 form-group">
+                            <input type="text" v-model="form.address" required placeholder="" />
+                            <label>Address</label>
                         </div>
                     </div>
                 </div>
@@ -59,6 +58,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import type { IContact } from '../types/IContact';
+import { computed } from 'vue';
 
 const props = defineProps<{
     initialContact: IContact | null
@@ -94,15 +94,62 @@ function submitForm() {
 function goBack() {
     emit('cancel');
 }
+
+const isFormFilled = computed(() => {
+  return (
+    form.value.name.trim() !== '' ||
+    form.value.email.trim() !== ''
+  );
+});
+
+
 </script>
 
 <style scoped>
 /* no changes */
-.btn{
+.btn {
     border-radius: 20px;
 }
-.name{
+
+.name {
     padding-top: 7px;
     padding-left: 7px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 40px;
+    padding: 12px 12px 12px 20px;
+    /* add left padding 20px */
+    border: 2px solid rgb(11, 87, 208);
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-group label {
+    position: absolute;
+    top: 12px;
+    left: 30px;
+    /* match input padding */
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.form-group input:focus+label,
+.form-group input:not(:placeholder-shown)+label {
+    top: -8px;
+    left: 16px;
+    /* slightly smaller to fit nicely */
+    font-size: 12px;
+    color: #555;
+    background-color: white;
+    padding: 0 4px;
 }
 </style>
