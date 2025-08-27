@@ -24,8 +24,8 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-success me-2">Save</button>
-                        <button type="button" class="btn btn-secondary me-2" @click="cancelEdit">Cancel</button>
+                        <button type="submit" class="btn btn-success text-start me-2">Save</button>
+                        <!-- <button type="button" class="btn btn-secondary me-2" @click="cancelEdit">Cancel</button> -->
                         <button type="button" class="btn btn-danger" @click="deleteContact">Delete</button>
                     </div>
                 </form>
@@ -49,12 +49,12 @@ const contact = ref<IContact>({ name: '', email: '', phone: 0, address: '' });
 onMounted(() => {
     const storedContacts = localStorage.getItem('contacts');
     if (storedContacts) contacts.value = JSON.parse(storedContacts);
-    const existing = contacts.value.find(c => c.name === contactName);
+    const existing = contacts.value.find(cont => cont.name === contactName);
     if (existing) contact.value = { ...existing };
 });
 
 function saveContact() {
-    const index = contacts.value.findIndex(c => c.name === contactName);
+    const index = contacts.value.findIndex(cont => cont.name === contactName);
     if (index !== -1) {
         contacts.value[index] = { ...contact.value };
         localStorage.setItem('contacts', JSON.stringify(contacts.value));
@@ -62,9 +62,9 @@ function saveContact() {
     }
 }
 
-function cancelEdit() {
-    router.push('/');
-}
+// function cancelEdit() {
+//     router.push('/');
+// }
 
 function deleteContact() {
     contacts.value = contacts.value.filter(c => c.name !== contactName);

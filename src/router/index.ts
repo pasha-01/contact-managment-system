@@ -3,6 +3,7 @@ import ContactPage from '@/pages/ContactPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import ContactForm from '@/components/ContactForm.vue'
 import ContactDetails from '@/components/ContactDetails.vue'
+import ContactItem from '@/components/ContactItem.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -28,6 +29,7 @@ const routes: Array<RouteRecordRaw> = [
   component: ContactForm,
   meta: { requiresAuth: true }
  },
+
  { path: '/contact/:name', 
   name: 'ContactDetail', 
   component: ContactDetails, 

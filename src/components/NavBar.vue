@@ -3,18 +3,19 @@
         <div class="container-fluid d-flex align-items-center">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-lg-3  col-sm-4 col-4">
                         <span class="navbar-brand text-dark me-3 ">
                             <i class="bi bi-person-lines-fill me-2"></i>
                             Contact</span>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-lg-7  col-sm-4 col-4">
                         <form v-if="showSearch" class="d-flex flex-grow-1 me-3" @submit.prevent>
-                            <input v-model="searchQuery" @input="onSearch" class="form-control me-2 flex-grow-1 "
-                                type="search" placeholder="Search" />
+                            <input v-model="searchQuery" @input="onSearch" 
+                            class="form-control me-2 flex-grow-1"
+                            type="search" placeholder="Search"  />
                         </form>
                     </div>
-                    <div class="col-md-2 text-end">
+                    <div class="col-lg-2 col-sm-4 col-4 text-end">
                         <button v-if="$route.meta.requiresAuth" class=" btn btn-outline-secondary " @click="logout">
                             Logout
                         </button>
@@ -48,3 +49,4 @@ function logout() {
 }
 
 </script>
+
