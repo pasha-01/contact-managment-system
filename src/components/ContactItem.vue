@@ -1,6 +1,7 @@
 <template>
     <tr class="contact-row">
         <!-- <td>{{ contact.name }}</td> -->
+         
         <td class="d-flex align-items-center">
             <div class="contact-avatar me-4" 
             :style="{ backgroundColor: getRandomColor(contact.name) }">
@@ -56,14 +57,13 @@ function startEdit() {
     emit('edit-contact', props.contact);
 }
 
-function doDelete() {
-    emit('delete-contact', props.contact);
-}
+// function doDelete() {
+//     emit('delete-contact', props.contact);
+// }
 
 function getRandomColor(name: string) {
-  // Use a hash to make it deterministic per name
   const colors = ['#FFB6C1', '#87CEFA', '#90EE90', '#FFA07A', '#9370DB', '#F4A460', '#40E0D0'];
-  const hash = name.charCodeAt(0) + name.length; // simple hash
+  const hash = name.charCodeAt(0) + name.length; 
   return colors[hash % colors.length];
 }
 
@@ -78,12 +78,9 @@ function getRandomColor(name: string) {
 .table-hover>tbody>tr.contact-row:hover {
     background-color: #AABBCC;
 }
-
-
 .contact-row td {
     border-bottom: none !important;
 }
-
 /* hide by default (no layout shift) */
 .action-buttons {
     opacity: 0;

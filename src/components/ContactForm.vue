@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-8 col-8 mb-3">
-                    <div class="d-flex   ps-2">
+                    <div class="d-flex">
                         <button type="button" class="btn btn-light me-2" @click="goBack">
                             <i class="bi bi-arrow-left"></i>
                         </button>
@@ -17,28 +17,40 @@
 
                 </div>
                 <div class="col-lg-8 col-sm-8 col-8 mb-3 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary border-rounded justify-content-start" :disabled="!isFormFilled">
+                    <!-- <button type="submit" class="btn btn-primary border-rounded justify-content-start" :disabled="!isFormFilled">
+                        Save
+                    </button> -->
+                    <button type="submit" :class="isFormFilled ? 'btn btn-primary' : 'btn btn-secondary'"
+                        :disabled="!isFormFilled" class="border-rounded justify-content-start">
                         Save
                     </button>
+
                 </div>
             </div>
 
             <div class="row justify-content-start">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-8 mb-3  form-group">
-                            <input type="text" v-model="form.name" required placeholder="" />
+                        <div class="col-md-8 mb-3 form-group">
+                              <i class="bi bi-person input-icon ps-2"></i>    
+                            <input type="text"  v-model="form.name" required placeholder="" />
                             <label>Name</label>
                         </div>
+
+                        
                         <div class="col-md-8 mb-3 form-group">
+                              <i class="bi bi-envelope input-icon ps-2"></i>    
                             <input type="text" v-model="form.email" required placeholder="" />
                             <label>Email</label>
                         </div>
                         <div class="col-md-8 mb-3 form-group">
+                              <i class="bi bi-telephone input-icon ps-2"></i>    
                             <input v-model="phoneString" required placeholder="" />
                             <label type="text">Phone Number</label>
                         </div>
                         <div class="col-md-8 mb-3 form-group">
+                              <i class="bi bi-geo-alt input-icon ps-2"></i>    
+
                             <input type="text" v-model="form.address" required placeholder="" />
                             <label>Address</label>
                         </div>
@@ -46,12 +58,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="text-align-between ps-2">
-            <button type="button" class="btn btn-secondary me-2" @click="goBack">Back</button>
-            <button type="submit" class="btn btn-success text-end me-2">Save </button>
-            <span class="ms-2 text-muted small">
-                <br>Fields marked * are required.</span>
-        </div> -->
     </form>
 </template>
 
@@ -96,10 +102,10 @@ function goBack() {
 }
 
 const isFormFilled = computed(() => {
-  return (
-    form.value.name.trim() !== '' ||
-    form.value.email.trim() !== ''
-  );
+    return (
+        form.value.name.trim() !== '' ||
+        form.value.email.trim() !== ''
+    );
 });
 
 
@@ -152,4 +158,14 @@ const isFormFilled = computed(() => {
     background-color: white;
     padding: 0 4px;
 }
+
+.input-icon {
+  position: absolute;
+  left: -30px; /* Push icon outside the input */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
 </style>
