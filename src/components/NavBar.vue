@@ -9,7 +9,7 @@
                             <i class="bi bi-person-lines-fill me-2"></i>
                             Contact</span>
                     </div>
-                    <div class="col-lg-7  col-sm-4 col-4">
+                    <div class="col-lg-7  col-sm-4 col-4 p-0">
                         <form v-if="showSearch" class="d-flex flex-grow-1 me-3" @submit.prevent>
                             <input v-model="searchQuery" @input="onSearch" class="form-control me-2 flex-grow-1"
                                 type="search" placeholder="Search" />

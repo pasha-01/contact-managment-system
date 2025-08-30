@@ -1,8 +1,6 @@
 <template>
     <tr class="contact-row">
-        <!-- <td>{{ contact.name }}</td> -->
-         
-        <td class="d-flex align-items-center">
+        <!-- <td class="d-flex align-items-center">
             <div class="contact-avatar me-4" 
             :style="{ backgroundColor: getRandomColor(contact.name) }">
                 {{ contact.name.charAt(0).toUpperCase() }}
@@ -12,7 +10,40 @@
 
         <td>{{ contact.email }}</td>
         <td>{{ contact.phone }}</td>
-        <td>{{ contact.address }}</td>
+        <td>{{ contact.address }}</td> -->
+
+        <td 
+             class="d-flex align-items-center text-truncate" 
+            style="max-width: 180px;">
+                 <div 
+                    class="contact-avatar me-2" 
+                    :style="{ backgroundColor: getRandomColor(contact.name) }">
+                    {{ contact.name.charAt(0).toUpperCase() }}
+                 </div>
+                <span   
+                class="text-truncate d-inline-block" 
+                style="max-width: 120px;">
+                {{ contact.name }}
+                </span>
+        </td>
+
+        <td 
+            class="text-truncate" 
+            style="max-width: 200px;">
+            {{ contact.email }}
+        </td>
+        <td 
+            class="text-truncate" 
+            style="max-width: 140px;">
+            {{ contact.phone }}
+        </td>
+        <td 
+            style="max-width: 250px; 
+            word-break: break-word; 
+            white-space: normal;">
+            {{ contact.address }}
+        </td>
+
 
         <td class="text-end actions-cell">
             <div class="action-buttons">
@@ -57,14 +88,10 @@ function startEdit() {
     emit('edit-contact', props.contact);
 }
 
-// function doDelete() {
-//     emit('delete-contact', props.contact);
-// }
-
 function getRandomColor(name: string) {
-  const colors = ['#FFB6C1', '#87CEFA', '#90EE90', '#FFA07A', '#9370DB', '#F4A460', '#40E0D0'];
-  const hash = name.charCodeAt(0) + name.length; 
-  return colors[hash % colors.length];
+    const colors = ['#FFB6C1', '#87CEFA', '#90EE90', '#FFA07A', '#9370DB', '#F4A460', '#40E0D0'];
+    const hash = name.charCodeAt(0) + name.length;
+    return colors[hash % colors.length];
 }
 
 </script>
@@ -78,10 +105,11 @@ function getRandomColor(name: string) {
 .table-hover>tbody>tr.contact-row:hover {
     background-color: #AABBCC;
 }
+
 .contact-row td {
     border-bottom: none !important;
 }
-/* hide by default (no layout shift) */
+
 .action-buttons {
     opacity: 0;
     visibility: hidden;
@@ -93,17 +121,14 @@ function getRandomColor(name: string) {
     align-items: center;
 }
 
-/* show only when the row is hovered */
 .contact-row:hover .action-buttons,
 .contact-row:focus-within .action-buttons {
-    /* keyboard accessible */
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
 }
 
-/* circular icon buttons */
 .icon-btn {
     width: 36px;
     height: 36px;
@@ -114,23 +139,21 @@ function getRandomColor(name: string) {
     justify-content: center;
 }
 
-/* tighten icon size if needed */
 .icon-btn i {
     font-size: 1rem;
     line-height: 1;
 }
 
 .contact-avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  text-transform: uppercase;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
 }
-
 </style>

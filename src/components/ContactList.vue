@@ -45,7 +45,6 @@ const props = defineProps<{
 </script>
 
 <style scoped>
-/* remove cursor pointer on hover so rows don't appear clickable */
 tr:hover {
     background-color: skyblue;
 }
@@ -70,13 +69,12 @@ p {
 
 .icon-btn:hover {
     background-color: #c2e7ff;
-    /* Same sky blue as other buttons */
 }
 .table td {
-  max-width: 150px;         /* Adjust width as needed */
-  white-space: nowrap;       /* Prevent line breaks */
-  overflow: hidden;          /* Hide overflow */
-  text-overflow: ellipsis;   /* Show "..." for long text */
+  max-width: 150px;         
+  white-space: nowrap;      
+  overflow: hidden;          
+  text-overflow: ellipsis;   
 }
 
 

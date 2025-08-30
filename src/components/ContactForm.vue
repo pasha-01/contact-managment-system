@@ -131,7 +131,6 @@ const isFormFilled = computed(() => {
     width: 100%;
     height: 40px;
     padding: 12px 12px 12px 20px;
-    /* add left padding 20px */
     border: 2px solid rgb(11, 87, 208);
     border-radius: 5px;
     outline: none;
@@ -142,7 +141,6 @@ const isFormFilled = computed(() => {
     position: absolute;
     top: 12px;
     left: 30px;
-    /* match input padding */
     color: #aaa;
     pointer-events: none;
     transition: 0.2s;
@@ -152,7 +150,6 @@ const isFormFilled = computed(() => {
 .form-group input:not(:placeholder-shown)+label {
     top: -8px;
     left: 16px;
-    /* slightly smaller to fit nicely */
     font-size: 12px;
     color: #555;
     background-color: white;
@@ -161,7 +158,7 @@ const isFormFilled = computed(() => {
 
 .input-icon {
   position: absolute;
-  left: -30px; /* Push icon outside the input */
+  left: -30px; 
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.2rem;

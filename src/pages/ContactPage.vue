@@ -116,9 +116,9 @@
                         </label>
                 </div>
 
-                <div class="col-md-9 col-sm-9  custom-col border rounded">
+                <div class="col-lg-9 col-sm-9  custom-col border rounded">
                     <div v-if="mode === 'list'">
-                        <div class="p-3 ps-4 scrollable-content">
+                        <div class="p-3 ps-2 scrollable-content">
                             <ContactList :contacts="filteredContacts" @edit-contact="openEdit"
                                 @delete-contact="deleteContact" />
                         </div>
